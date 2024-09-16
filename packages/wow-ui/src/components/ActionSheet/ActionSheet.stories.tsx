@@ -72,16 +72,14 @@ export const Controlled = () => {
     <>
       <Button onClick={onOpen}>Open</Button>
       <ActionSheet isOpen={open} onClose={onClose}>
-        <ActionSheet.Header
-          style={{ paddingBottom: "1rem" }}
-          subText="subtext"
-          text="Text"
-        />
-        <ActionSheet.Body style={{ paddingBottom: "1rem" }}>
+        <ActionSheet.Header subText="subtext" text="Text" />
+        <ActionSheet.Body gap="md" paddingY="md">
+          <Box text="Box" />
           <Box text="Box" />
         </ActionSheet.Body>
-        <ActionSheet.Footer>
-          <Button style={{ minWidth: "100%" }}>Button</Button>
+        <ActionSheet.Footer gap="md">
+          <Button variant="outline">Button</Button>
+          <Button>Button</Button>
         </ActionSheet.Footer>
       </ActionSheet>
     </>
