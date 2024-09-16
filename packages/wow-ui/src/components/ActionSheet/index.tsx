@@ -1,7 +1,7 @@
 "use client";
 
 import { cva } from "@styled-system/css";
-import type { PropsWithChildren } from "react";
+import type { CSSProperties, PropsWithChildren } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
@@ -12,9 +12,20 @@ import ActionSheetFooter from "./ActionSheetFooter";
 import ActionSheetHeader from "./ActionSheetHeader";
 import ActionSheetOverlay from "./ActionSheetOverlay";
 
+/**
+ * @description ActionSheet 컴포넌트입니다.
+ *
+ * @param {boolean} isOpen 액션시트의 표시 여부.
+ * @param {onClose} onClose 액션시트를 닫는 함수.
+ * @param {CSSProperties} [style] 액션시트의 커스텀 스타일.
+ * @param {string} [className] 액션시트에 전달하는 커스텀 클래스.
+ */
+
 export interface ActionSheetProps extends PropsWithChildren {
   isOpen: boolean;
   onClose: () => void;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const ActionSheet = ({
