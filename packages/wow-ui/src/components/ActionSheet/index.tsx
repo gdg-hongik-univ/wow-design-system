@@ -1,8 +1,8 @@
 "use client";
 
-import { styled } from "@styled-system/jsx";
+import { cva } from "@styled-system/css";
 import type { PropsWithChildren } from "react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
 
@@ -24,29 +24,32 @@ const ActionSheet = ({
   ...rest
 }: ActionSheetProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  useClickOutside(dialogRef, onClose);
+  const [state, setState] = useState<"open" | "close">("close");
+
+  const handleClickClose = () => {
+    setState("close");
+    setTimeout(() => {
+      onClose();
+    }, 100);
+  };
+
+  useClickOutside(dialogRef, handleClickClose);
+
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setState("open");
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   return (
     isOpen && (
-      <ActionSheetContext.Provider value={{ onClose }}>
-        <styled.dialog
-          alignItems="center"
-          borderTopRadius="md"
-          bottom={0}
-          display="flex"
-          flexDir="column"
-          left="50%"
-          overflow="hidden"
-          padding="1.25rem 1rem"
-          position="fixed"
-          ref={dialogRef}
-          translate="-50%"
-          width={390}
-          zIndex={9999}
-          {...rest}
-        >
+      <ActionSheetContext.Provider value={{ onClose: handleClickClose }}>
+        <dialog className={dialogStyle({ state })} ref={dialogRef} {...rest}>
           {children}
-        </styled.dialog>
+        </dialog>
         {/* TODO: 공통 컴포넌트? */}
         <ActionSheetBackground />
       </ActionSheetContext.Provider>
@@ -57,6 +60,42 @@ const ActionSheet = ({
 ActionSheet.Header = ActionSheetHeader;
 ActionSheet.Body = ActionSheetBody;
 ActionSheet.Footer = ActionSheetFooter;
+
+const dialogStyle = cva({
+  base: {
+    width: 390,
+
+    padding: "1.25rem 1rem",
+
+    display: "flex",
+    flexDir: "column",
+    alignItems: "center",
+
+    borderTopRadius: "md",
+    overflow: "hidden",
+
+    position: "fixed",
+    bottom: 0,
+    left: "50%",
+    translate: "-50%",
+
+    transition: "transform",
+    transitionDelay: "0.8",
+    transitionTimingFunction: "ease-in-out",
+
+    zIndex: 9999,
+  },
+  variants: {
+    state: {
+      open: {
+        transform: "translateY(0)",
+      },
+      close: {
+        transform: "translateY(100%)",
+      },
+    },
+  },
+});
 
 ActionSheet.displayName = "ActionSheet";
 export default ActionSheet;
