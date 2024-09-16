@@ -1,7 +1,7 @@
 "use client";
 
 import { cva } from "@styled-system/css";
-import type { CSSProperties, PropsWithChildren } from "react";
+import type { CSSProperties, ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
@@ -21,7 +21,17 @@ import ActionSheetOverlay from "./ActionSheetOverlay";
  * @param {string} [className] 액션시트에 전달하는 커스텀 클래스.
  */
 
-export interface ActionSheetProps extends PropsWithChildren {
+export interface ActionSheetProps {
+  children:
+    | [
+        ReactElement<typeof ActionSheetHeader>,
+        ReactElement<typeof ActionSheetFooter>,
+      ]
+    | [
+        ReactElement<typeof ActionSheetHeader>,
+        ReactElement<typeof ActionSheetBody>,
+        ReactElement<typeof ActionSheetFooter>,
+      ];
   isOpen: boolean;
   onClose: () => void;
   style?: CSSProperties;
