@@ -59,6 +59,10 @@ export default {
     Button: "./src/components/Button",
     Box: "./src/components/Box",
     Avatar: "./src/components/Avatar",
+    ActionSheetBody: "./src/components/ActionSheet/ActionSheetBody",
+    ActionSheetFooter: "./src/components/ActionSheet/ActionSheetFooter",
+    ActionSheetHeader: "./src/components/ActionSheet/ActionSheetHeader",
+    ActionSheet: "./src/components/ActionSheet",
   },
   output: [
     {

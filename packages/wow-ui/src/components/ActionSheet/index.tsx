@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
 
-import ActionSheetBackground from "./ActionSheetBackground";
 import ActionSheetBody from "./ActionSheetBody";
 import { ActionSheetContext } from "./ActionSheetContext";
 import ActionSheetFooter from "./ActionSheetFooter";
 import ActionSheetHeader from "./ActionSheetHeader";
+import ActionSheetOverlay from "./ActionSheetOverlay";
 
 export interface ActionSheetProps extends PropsWithChildren {
   isOpen: boolean;
@@ -51,7 +51,7 @@ const ActionSheet = ({
           {children}
         </dialog>
         {/* TODO: 공통 컴포넌트? */}
-        <ActionSheetBackground />
+        <ActionSheetOverlay />
       </ActionSheetContext.Provider>
     )
   );

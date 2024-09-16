@@ -27,6 +27,7 @@ const excludedComponents = [
   "DropDownOptionList",
   "pickerComponents",
   "ToastContext",
+  "ActionSheetOverlay",
 ];
 
 // 추가할 컴포넌트 목록

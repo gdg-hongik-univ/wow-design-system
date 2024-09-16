@@ -1,6 +1,6 @@
 import { styled } from "@styled-system/jsx";
 
-const ActionSheetBackground = () => {
+const ActionSheetOverlay = () => {
   return (
     <styled.div
       backgroundColor="backgroundDimmer"
@@ -14,4 +14,4 @@ const ActionSheetBackground = () => {
   );
 };
 
-export default ActionSheetBackground;
+export default ActionSheetOverlay;
