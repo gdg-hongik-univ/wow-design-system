@@ -1,4 +1,4 @@
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 
 import ActionSheet from "@/components/ActionSheet";
 import Box from "@/components/Box";
@@ -44,6 +44,13 @@ const meta = {
       control: false,
     },
   },
+  decorators: [
+    (Story: StoryFn) => (
+      <div style={{ height: 200 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof ActionSheet>;
 
 export default meta;
@@ -65,7 +72,7 @@ export const Default = () => {
   );
 };
 
-export const Controlled = () => {
+export const OpenWithButton = () => {
   const { open, onClose, onOpen } = useOpenState();
 
   return (
