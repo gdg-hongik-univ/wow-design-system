@@ -47,31 +47,25 @@ const ActionSheet = ({
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [state, setState] = useState<"open" | "close">("close");
 
-  const handleClickClose = () => {
+  const handleClose = () => {
     setState("close");
-    setTimeout(() => {
-      onClose();
-    }, 100);
+    setTimeout(onClose, 100);
   };
 
-  useClickOutside(dialogRef, handleClickClose);
+  useClickOutside(dialogRef, handleClose);
 
   useEffect(() => {
-    if (isOpen) {
-      const timer = setTimeout(() => {
-        setState("open");
-      }, 100);
-      return () => clearTimeout(timer);
-    }
+    if (!isOpen) return;
+    const timer = setTimeout(() => setState("open"), 100);
+    return () => clearTimeout(timer);
   }, [isOpen]);
 
   return (
     isOpen && (
-      <ActionSheetContext.Provider value={{ onClose: handleClickClose }}>
+      <ActionSheetContext.Provider value={{ onClose: handleClose }}>
         <dialog className={dialogStyle({ state })} ref={dialogRef} {...rest}>
           {children}
         </dialog>
-        {/* TODO: 공통 컴포넌트? */}
         <ActionSheetOverlay />
       </ActionSheetContext.Provider>
     )
