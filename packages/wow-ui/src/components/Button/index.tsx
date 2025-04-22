@@ -2,6 +2,7 @@
 
 import { cva } from "@styled-system/css/cva";
 import { styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties, ElementType, ReactNode } from "react";
 import { forwardRef } from "react";
 
@@ -56,6 +57,7 @@ const Button: ButtonComponent & { displayName?: string } = forwardRef(
       size = "lg",
       variant = "solid",
       icon,
+      className,
       ...rest
     }: ButtonProps<C>,
     ref?: PolymorphicRef<C>
@@ -67,10 +69,13 @@ const Button: ButtonComponent & { displayName?: string } = forwardRef(
         aria-disabled={disabled}
         disabled={disabled}
         ref={ref}
-        className={ButtonStyle({
-          size: variant === "sub" ? "sm" : size,
-          variant,
-        })}
+        className={clsx(
+          className,
+          ButtonStyle({
+            size: variant === "sub" ? "sm" : size,
+            variant,
+          })
+        )}
         {...rest}
       >
         <styled.span className={ContentStyle({ size })}>

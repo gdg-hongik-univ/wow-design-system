@@ -2,6 +2,7 @@
 
 import { cva } from "@styled-system/css";
 import { Flex, styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties, InputHTMLAttributes } from "react";
 import { forwardRef, useId, useLayoutEffect, useRef } from "react";
 import { Search as SearchIcon } from "wowds-icons";
@@ -55,6 +56,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
       maxLength,
       inputProps,
       disabled,
+      className,
       ...rest
     },
     ref
@@ -89,7 +91,11 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     }, [disabled, setVariant]);
 
     return (
-      <Flex className={containerStyle({ type: variant })} gap="xs" {...rest}>
+      <Flex
+        className={clsx(className, containerStyle({ type: variant }))}
+        gap="xs"
+        {...rest}
+      >
         <SearchIcon stroke={getStrokeColor(variant)} />
         <styled.input
           {...inputProps}
