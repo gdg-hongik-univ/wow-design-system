@@ -19,7 +19,6 @@ yarn add wowds-ui
 
 ## 🛠️ Usage
 
-
 ```ts
 import Button from "wowds-ui/Button";
 
@@ -34,7 +33,7 @@ export default App;
 
 ```
 1. 레포 클론
-git clone https://github.com/GDSC-Hongik/wow-design-system.git
+git clone https://github.com/gdg-hongik-univ/wow-design-system.git
 
 2. 디렉토리 이동
 cd packages/wow-ui
@@ -44,11 +43,13 @@ pnpm install
 ```
 
 ## 🌐 Links
+
 - [npm](https://www.npmjs.com/package/wowds-ui)
 - [storybook](https://wow-design-system-wow-ui.vercel.app/?path=/docs/ui-avatar--docs)
-- [wow-docs](https://wow-design-system-wow-docs.vercel.app/overview)
+- [wow-docs](https://wow-ds.wawoo.dev/overview)
 
 ## 🚀 Tech Stack
+
 <div align="left">
 <div>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
