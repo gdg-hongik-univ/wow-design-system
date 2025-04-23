@@ -2,6 +2,7 @@
 import { cva } from "@styled-system/css";
 import { Flex, styled } from "@styled-system/jsx";
 import type { ColorToken } from "@styled-system/tokens";
+import { clsx } from "clsx";
 import { RightArrow, Warn } from "wowds-icons";
 
 import Checkbox from "@/components/Checkbox";
@@ -54,6 +55,7 @@ const Box = <T extends BoxVariantType = "text">({
   onClick,
   onChange,
   checked: checkedProp,
+  className,
   ...rest
 }: BoxProps<T>) => {
   const { handleClick, checked } = useCheckedState({
@@ -86,10 +88,13 @@ const Box = <T extends BoxVariantType = "text">({
       gap={variant !== "text" ? "lg" : undefined}
       id={`box-${text}`}
       justifyContent="space-between"
-      className={containerStyle({
-        status: disabled ? "disabled" : status,
-        variant: disabled ? "disabled" : variant,
-      })}
+      className={clsx(
+        className,
+        containerStyle({
+          status: disabled ? "disabled" : status,
+          variant: disabled ? "disabled" : variant,
+        })
+      )}
       onClick={handleArrowClick}
       {...rest}
     >

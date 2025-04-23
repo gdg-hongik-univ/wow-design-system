@@ -216,7 +216,12 @@
       "import": "./dist/Avatar.js"
     }
   },
-  "keywords": [],
+  "keywords": [
+    "디자인시스템",
+    "wow-design-system",
+    "wowds-ui",
+    "component"
+  ],
   "license": "ISC",
   "scripts": {
     "build": "pnpm generate:build-config && rm -rf dist && rollup -c --bundleConfigAsCjs && tsc-alias && panda cssgen --outfile dist/styles.css",
@@ -266,11 +271,11 @@
     "wowds-icons": "workspace:^"
   },
   "peerDependencies": {
-    "next": "^14.1.1",
+    "next": ">=14.2.25",
     "react": "^18.2.0"
   },
   "bugs": {
-    "url": "https://github.com/GDSC-Hongik/wow-design-system/issues"
+    "url": "https://github.com/gdg-hongik-univ/wow-design-system/issues"
   },
-  "homepage": "https://github.com/GDSC-Hongik/wow-design-system#readme"
+  "homepage": "https://github.com/gdg-hongik-univ/wow-design-system#readme"
 }

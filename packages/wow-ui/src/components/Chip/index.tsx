@@ -1,7 +1,7 @@
 "use client";
 import { cva } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
-import clsx from "clsx";
+import { clsx } from "clsx";
 import type { ReactNode } from "react";
 import { forwardRef, useEffect, useState } from "react";
 

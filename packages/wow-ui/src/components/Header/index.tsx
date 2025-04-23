@@ -1,3 +1,13 @@
+import { css } from "@styled-system/css";
+import { Flex } from "@styled-system/jsx";
+import { clsx } from "clsx";
+import { GdscLogo } from "wowds-icons";
+
+import Button from "@/components/Button";
+import type { DefaultProps } from "@/types/DefaultProps";
+
+type RightElementType = "username" | "login" | "none";
+
 /**
  * @description 헤더 컴포넌트입니다.
  * 사이트 로고와 로그인 또는 사용자 이름 표시 기능을 포함합니다.
@@ -11,15 +21,7 @@
  * @param {T extends "login" ? () => void : never} [onClick] - 로그인 버튼 클릭 시 호출되는 함수.
  */
 
-import { css } from "@styled-system/css";
-import { Flex } from "@styled-system/jsx";
-import { GdscLogo } from "wowds-icons";
-
-import Button from "@/components/Button";
-
-type RightElementType = "username" | "login" | "none";
-
-export interface HeaderProps<T extends RightElementType> {
+export interface HeaderProps<T extends RightElementType> extends DefaultProps {
   variant?: T;
   username?: T extends "username" ? string : never;
   onClick?: T extends "login" ? () => void : never;
@@ -29,9 +31,16 @@ const Header = ({
   variant = "none",
   username,
   onClick,
+  className,
+  ...rest
 }: HeaderProps<RightElementType>) => {
   return (
-    <header aria-label="header" className={headerStyle} role="banner">
+    <header
+      aria-label="header"
+      className={clsx(headerStyle, className)}
+      role="banner"
+      {...rest}
+    >
       <div className={headerContentStyle}>
         <section className={leftElementContainerStyle}>
           <GdscLogo aria-label="gdsc-logo" role="img" />

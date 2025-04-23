@@ -1,5 +1,6 @@
 import { cva } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties } from "react";
 
 /**
@@ -16,12 +17,15 @@ export interface DividerProps {
   className?: string;
 }
 
-const Divider = ({ type = "light", ...rest }: DividerProps) => {
+const Divider = ({ type = "light", className, ...rest }: DividerProps) => {
   return (
     <styled.div
-      className={dividerStyle({
-        type,
-      })}
+      className={clsx(
+        className,
+        dividerStyle({
+          type,
+        })
+      )}
       {...rest}
     />
   );

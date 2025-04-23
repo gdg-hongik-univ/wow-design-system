@@ -3,6 +3,7 @@
 import { css } from "@styled-system/css";
 import type { FlexProps } from "@styled-system/jsx";
 import { Flex, styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties } from "react";
 import { forwardRef, useEffect, useState } from "react";
 import type { IconProps } from "wowds-icons";
@@ -48,6 +49,7 @@ const Toast = forwardRef(
     rightIcon = "none",
     showLeftIcon = false,
     toastDuration,
+    className,
     ...rest
   }: ToastProps) => {
     const TOAST_DURATION = toastDuration || 2000;
@@ -79,12 +81,12 @@ const Toast = forwardRef(
         clearTimeout(timeoutForRemove);
         clearTimeout(timeoutForVisible);
       };
-    }, [id, removeToast]);
+    }, [TOAST_DURATION, id, onRemove, removeToast]);
 
     return (
       <Flex
         align="center"
-        className={toastContainerStyle}
+        className={clsx(className, toastContainerStyle)}
         justify="space-between"
         style={{ opacity }}
         transition="opacity"

@@ -2,6 +2,7 @@
 
 import { cva } from "@styled-system/css";
 import { Flex, styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type {
   ChangeEvent,
   CSSProperties,
@@ -69,6 +70,7 @@ const TextField = forwardRef<HTMLTextAreaElement, TextFieldProps>(
       error = false,
       success = false,
       textareaProps,
+      className,
       ...rest
     },
     ref
@@ -122,7 +124,12 @@ const TextField = forwardRef<HTMLTextAreaElement, TextFieldProps>(
     };
 
     return (
-      <Flex className={containerStyle()} direction="column" gap="xs" {...rest}>
+      <Flex
+        className={clsx(className, containerStyle())}
+        direction="column"
+        gap="xs"
+        {...rest}
+      >
         <Flex alignItems="flex-end" justifyContent="space-between">
           <Label textareaId={descriptionId} variant={variant}>
             {label}
