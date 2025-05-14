@@ -32,7 +32,10 @@ const meta = {
         "액션시트의 자식 요소로 Header, Body, Footer를 조합해서 사용합니다.",
       control: false,
       table: {
-        type: { summary: "ReactNode" },
+        type: {
+          summary:
+            "[ActionSheet.Header, ActionSheet.Footer] | [ActionSheet.Header, ActionSheet.Body, ActionSheet.Footer]",
+        },
         defaultValue: {
           summary:
             "<ActionSheet.Header />\n<ActionSheet.Body />\n<ActionSheet.Footer />",

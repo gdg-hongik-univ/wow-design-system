@@ -35,13 +35,25 @@ const ActionSheetHeader = ({
       width="100%"
       {...rest}
     >
-      <Close stroke="outline" style={{ cursor: "pointer" }} onClick={onClose} />
+      <styled.button
+        aria-label="액션시트 닫기"
+        bg="transparent"
+        border="none"
+        cursor="pointer"
+        display="flex"
+        p="0"
+        onClick={onClose}
+      >
+        <Close stroke="outline" />
+      </styled.button>
       <styled.h1 textStyle="h1" width="100%">
         {text}
       </styled.h1>
-      <styled.p textStyle="body1" width="100%">
-        {subText}
-      </styled.p>
+      {subText && (
+        <styled.p textStyle="body1" width="100%">
+          {subText}
+        </styled.p>
+      )}
     </styled.header>
   );
 };

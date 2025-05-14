@@ -57,10 +57,14 @@ const ActionSheet = forwardRef<HTMLDialogElement, ActionSheetProps>(
     useClickOutside(dialogRef, handleClose);
 
     useEffect(() => {
-      if (!isOpen) return;
+      if (!isOpen) {
+        setState("close");
+        return;
+      }
+      if (state === "open") return;
       const timer = setTimeout(() => setState("open"), READY_FOR_TRANSITION);
       return () => clearTimeout(timer);
-    }, [isOpen]);
+    }, [isOpen, state]);
 
     return (
       isOpen && (
@@ -115,7 +119,7 @@ const dialogStyle = cva({
     translate: "-50%",
 
     transition: "transform",
-    transitionDelay: "0.8",
+    transitionDelay: "0.8s",
     transitionTimingFunction: "ease-in-out",
 
     zIndex: "actionSheet",
