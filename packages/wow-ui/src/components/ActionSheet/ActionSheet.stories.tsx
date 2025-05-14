@@ -27,6 +27,18 @@ const meta = {
     },
   },
   argTypes: {
+    children: {
+      description:
+        "액션시트의 자식 요소로 Header, Body, Footer를 조합해서 사용합니다.",
+      control: false,
+      table: {
+        type: { summary: "ReactNode" },
+        defaultValue: {
+          summary:
+            "<ActionSheet.Header />\n<ActionSheet.Body />\n<ActionSheet.Footer />",
+        },
+      },
+    },
     isOpen: {
       description: "액션시트의 표시 여부를 설정합니다.",
       control: {
@@ -43,14 +55,14 @@ const meta = {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: { type: "object" },
     },
     className: {
       description: "액션시트에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
-      control: false,
+      control: { type: "text" },
     },
   },
   decorators: [
