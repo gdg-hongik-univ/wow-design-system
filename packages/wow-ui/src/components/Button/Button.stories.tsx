@@ -17,6 +17,14 @@ const meta = {
     },
   },
   argTypes: {
+    children: {
+      description: "버튼의 자식 요소를 나타냅니다.",
+      table: {
+        type: { summary: "ReactNode" },
+        required: true,
+      },
+      control: false,
+    },
     label: {
       description: "버튼의 라벨을 나타냅니다.",
       table: {
@@ -49,9 +57,9 @@ const meta = {
         type: { summary: "lg | sm" },
         defaultValue: { summary: "lg" },
       },
+      options: ["lg", "sm"],
       control: {
         type: "radio",
-        options: ["lg", "sm"],
       },
     },
     variant: {
@@ -60,24 +68,42 @@ const meta = {
         type: { summary: "solid | outline" },
         defaultValue: { summary: "solid" },
       },
+      options: ["solid", "outline"],
       control: {
         type: "radio",
-        options: ["solid", "outline"],
       },
     },
-    style: {
-      description: "버튼의 커스텀 스타일을 나타냅니다.",
-      table: {
-        type: { summary: "CSSProperties" },
-      },
-      control: false,
-    },
-    className: {
-      description: "버튼에 전달하는 커스텀 클래스를 나타냅니다.",
+    subText: {
+      description: "버튼의 서브 텍스트를 나타냅니다.",
       table: {
         type: { summary: "string" },
       },
+      control: {
+        type: "text",
+      },
+    },
+    icon: {
+      description: "버튼에 표시할 아이콘을 나타냅니다.",
+      table: {
+        type: { summary: "ReactNode" },
+      },
       control: false,
+    },
+    style: {
+      description: "버튼의 커스텀 스타일을 설정합니다.",
+      table: {
+        type: { summary: "CSSProperties" },
+      },
+      control: { type: "object" },
+    },
+    className: {
+      description: "버튼에 전달하는 커스텀 클래스를 설정합니다.",
+      table: {
+        type: { summary: "string" },
+      },
+      control: {
+        type: "text",
+      },
     },
     ref: {
       description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",

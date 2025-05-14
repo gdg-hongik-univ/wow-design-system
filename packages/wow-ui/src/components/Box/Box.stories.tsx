@@ -3,7 +3,6 @@ import { Flex, styled } from "@styled-system/jsx";
 import { useState } from "react";
 
 import Box from "@/components/Box";
-
 const meta = {
   title: "UI/Box",
   component: Box,
@@ -23,23 +22,25 @@ const meta = {
         type: { summary: "ReactNode" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "text",
+      },
     },
     variant: {
       description: "박스의 타입을 설정합니다.",
-      mapping: ["text", "checkbox", "arrow", "warn"],
       options: ["text", "checkbox", "arrow", "warn"],
       control: {
-        type: "select",
-        labels: {
-          text: "text",
-          checkbox: "checkbox",
-          arrow: "arrow",
+        type: "radio",
+      },
+      table: {
+        defaultValue: { summary: "text" },
+        type: {
+          summary: "text | checkbox | arrow | warn",
         },
       },
     },
     disabled: {
-      description: "Box가 활성 상태인지를 나타냅니다.",
+      description: "박스가 활성 상태인지를 나타냅니다.",
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
@@ -63,7 +64,8 @@ const meta = {
         type: { summary: "ColorToken" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: { type: "radio" },
+      options: ["textBlack", "primary", "red.400"],
     },
     subText: {
       description: "박스에 서브로 표기할 텍스트를 입력합니다.",
@@ -81,7 +83,8 @@ const meta = {
         type: { summary: "ColorToken" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: { type: "radio" },
+      options: ["textBlack", "primary", "red.400"],
     },
     checked: {
       description: "외부에서 제어할 활성 상태를 나타냅니다.",
@@ -95,14 +98,14 @@ const meta = {
     },
     status: {
       description: "박스의 상태를 설정합니다.",
-      mapping: ["default", "success", "error"],
       options: ["default", "success", "error"],
       control: {
-        type: "select",
-        labels: {
-          default: "default",
-          success: "success",
-          error: "error",
+        type: "radio",
+      },
+      table: {
+        defaultValue: { summary: "default" },
+        type: {
+          summary: "default | success | error",
         },
       },
     },
@@ -124,7 +127,7 @@ const meta = {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: { type: "object" },
     },
     className: {
       description: "박스에 전달하는 커스텀 클래스를 설정합니다.",

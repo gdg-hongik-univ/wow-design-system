@@ -86,6 +86,7 @@ const meta = {
         type: { summary: "(value: string) => void" },
       },
       control: false,
+      action: "onChange",
     },
     disabled: {
       description:
@@ -99,7 +100,7 @@ const meta = {
       },
     },
     className: {
-      description: "그룹에 전달하는 커스텀 클래스입니다.",
+      description: "그룹에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
@@ -108,11 +109,13 @@ const meta = {
       },
     },
     style: {
-      description: "그룹의 커스텀 스타일입니다.",
+      description: "그룹의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
   },
 } satisfies Meta<typeof MultiGroup>;

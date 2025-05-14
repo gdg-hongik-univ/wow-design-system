@@ -92,21 +92,21 @@ const meta = {
       table: {
         type: { summary: "(value: string) => void" },
       },
-      control: false,
+      action: "onChange",
     },
     onBlur: {
       description: "텍스트필드가 포커스를 잃을 때 호출될 콜백 함수입니다.",
       table: {
         type: { summary: "() => void" },
       },
-      control: false,
+      action: "onBlur",
     },
     onFocus: {
       description: "텍스트필드가 포커스됐을 때 호출될 콜백 함수입니다.",
       table: {
         type: { summary: "() => void" },
       },
-      control: false,
+      action: "onFocus",
     },
     textareaProps: {
       description: "텍스트필드에 전달할 추가 textarea 속성입니다.",
@@ -116,20 +116,27 @@ const meta = {
       control: false,
     },
     style: {
-      description: "텍스트필드의 커스텀 스타일 속성입니다.",
+      description: "텍스트필드의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
       },
-      control: false,
+      control: { type: "object" },
     },
     className: {
-      description: "텍스트필드에 전달하는 커스텀 클래스명입니다.",
+      description: "텍스트필드에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
       control: {
         type: "text",
       },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
+      control: false,
     },
   },
 } satisfies Meta<typeof TextField>;

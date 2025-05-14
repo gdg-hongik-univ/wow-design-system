@@ -4,24 +4,39 @@ import Title from "@components/Text/Title";
 import { componentItems } from "@constants/pageData";
 import type { Metadata } from "next/types";
 
+import { metadata as defaultMetaData } from "@/layout";
+
 import ComponentTab from "./_component/ComponentTab";
 import DividerCard from "./_component/DividerCard";
 import GuidelineTab from "./_component/GuidelineTab";
 
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Divider") ?? {};
+
 export const metadata: Metadata = {
-  title: "Divider",
-  description: "와우 디자인 시스템의 Divider 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const DividerPage = () => {
-  const title = componentItems.find((item) => item.title === "Divider");
   return (
     <>
-      <Title
-        main={title?.title || ""}
-        sub={title?.description || ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <DividerCard />
       <Space height={92} />

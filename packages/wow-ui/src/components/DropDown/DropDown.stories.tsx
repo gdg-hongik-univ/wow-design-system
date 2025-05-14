@@ -10,8 +10,7 @@ const meta = {
   component: DropDown,
   tags: ["autodocs"],
   parameters: {
-    componentSubtitle:
-      "사용자가 외부 트리거 컴포넌트나 내부 요소를 통해서 선택 옵션 리스트 중에 아이템을 선택할 수 있는 드롭다운 컴포넌트 입니다.",
+    componentSubtitle: "드롭다운 컴포넌트",
     a11y: {
       config: {
         rules: [{ id: "color-contrast", enabled: false }],
@@ -26,9 +25,10 @@ const meta = {
   },
   argTypes: {
     children: {
-      description: "DropDownOption 들을 children 컴포넌트로 받습니다.",
+      description: "DropDownOption 들을 children 으로 받습니다.",
       table: {
         type: { summary: "ReactNode" },
+        required: true,
       },
       control: false,
     },

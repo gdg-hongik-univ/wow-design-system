@@ -2,6 +2,7 @@
 
 import { css } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties, ElementType, ReactNode } from "react";
 import { forwardRef } from "react";
 
@@ -42,7 +43,14 @@ type ButtonComponent = <C extends ElementType = "button">(
 
 const TextButton: ButtonComponent & { displayName?: string } = forwardRef(
   <C extends ElementType = "button">(
-    { asProp, text, disabled = false, size = "lg", ...rest }: ButtonProps<C>,
+    {
+      asProp,
+      text,
+      disabled = false,
+      size = "lg",
+      className,
+      ...rest
+    }: ButtonProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
     const Component = asProp || "button";
@@ -50,7 +58,7 @@ const TextButton: ButtonComponent & { displayName?: string } = forwardRef(
     return (
       <Component
         aria-disabled={disabled}
-        className={TextButtonStyle}
+        className={clsx(className, TextButtonStyle)}
         disabled={disabled}
         ref={ref}
         {...rest}

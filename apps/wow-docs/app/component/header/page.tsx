@@ -10,21 +10,35 @@ import Header from "wowds-ui/Header";
 
 import ComponentTab from "@/component/header/_components/ComponentTab";
 import GuidelineTab from "@/component/header/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Header") ?? {};
 
 export const metadata: Metadata = {
-  title: "Header",
-  description: "와우 디자인 시스템의 header component 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const HeaderPage = () => {
-  const headerPageData = componentItems.find((item) => item.title === "Header");
   return (
     <>
-      <Title
-        main={headerPageData?.title ?? ""}
-        sub={headerPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card
         style={{

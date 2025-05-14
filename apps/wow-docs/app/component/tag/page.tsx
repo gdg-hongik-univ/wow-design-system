@@ -9,22 +9,35 @@ import Tag from "wowds-ui/Tag";
 
 import ComponentTab from "@/component/tag/_components/ComponentTab";
 import GuidelineTab from "@/component/tag/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Tag") ?? {};
 
 export const metadata: Metadata = {
-  title: "Tag",
-  description: "와우 디자인 시스템의 tag component 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const TagComponentPage = () => {
-  const tagPageData = componentItems.find((item) => item.title === "Tag");
-
   return (
     <>
-      <Title
-        main={tagPageData?.title ?? ""}
-        sub={tagPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card className={tagContainerStyle}>
         <Tag color="blue" variant="outline">

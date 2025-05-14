@@ -22,19 +22,23 @@ const meta = {
       },
     },
     style: {
-      description: "디바이더의 커스텀 스타일을 설정할 수 있습니다.",
+      description: "디바이더의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
     className: {
       description: "디바이더에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
-      control: false,
+      control: {
+        type: "text",
+      },
     },
   },
 } satisfies Meta<typeof Divider>;

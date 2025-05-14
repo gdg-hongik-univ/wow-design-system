@@ -7,23 +7,38 @@ import type { Metadata } from "next/types";
 import RadioButton from "wowds-ui/RadioButton";
 import RadioGroup from "wowds-ui/RadioGroup";
 
+import { metadata as defaultMetaData } from "@/layout";
+
 import ComponentTab from "./_component/ComponentTab";
 import GuidelineTab from "./_component/GuidelineTab";
 
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Radio Button") ?? {};
+
 export const metadata: Metadata = {
-  title: "Radio button",
-  description: "와우 디자인 시스템의 Radio button 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const RadioButtonPage = () => {
-  const title = componentItems.find((item) => item.title === "Radio Button");
   return (
     <>
-      <Title
-        main={title?.title || ""}
-        sub={title?.description || ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card style={{ padding: "73px 429px" }}>
         <RadioGroup defaultValue="Text">

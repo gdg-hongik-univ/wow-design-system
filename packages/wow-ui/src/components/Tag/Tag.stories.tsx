@@ -19,6 +19,7 @@ const meta = {
       description: "태그의 자식 요소.",
       table: {
         type: { summary: "ReactNode" },
+        required: true,
       },
       control: {
         type: "text",
@@ -30,9 +31,9 @@ const meta = {
         type: { summary: "outline | solid1 | solid2" },
         defaultValue: { summary: "outline" },
       },
+      options: ["outline", "solid1", "solid2"],
       control: {
         type: "radio",
-        options: ["outline", "solid1", "solid2"],
       },
     },
     color: {
@@ -40,22 +41,29 @@ const meta = {
       table: {
         type: { summary: "red | blue | green | yellow | grey" },
       },
+      options: ["red", "blue", "green", "yellow", "grey"],
       control: {
         type: "radio",
-        options: ["red", "blue", "green", "yellow", "grey"],
       },
     },
     style: {
-      description: "태그의 커스텀 스타일을 나타냅니다.",
+      description: "태그의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
       },
-      control: false,
+      control: { type: "object" },
     },
     className: {
-      description: "태그에 전달하는 커스텀 클래스를 나타냅니다.",
+      description: "태그에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
+      },
+      control: { type: "text" },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
       },
       control: false,
     },

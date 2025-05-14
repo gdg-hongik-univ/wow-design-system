@@ -11,6 +11,11 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     componentSubtitle: "라디오 그룹 컴포넌트",
+    docs: {
+      description: {
+        component: "children 에 RadioButton 컴포넌트를 넣어서 사용합니다.",
+      },
+    },
   },
   argTypes: {
     defaultValue: {
@@ -28,7 +33,7 @@ const meta = {
       },
     },
     children: {
-      description: "라디오 그룹의 자식 요소를 나타냅니다.",
+      description: "RadioButton들을 children 으로 받습니다.",
       table: {
         type: { summary: "RadioButton" },
         defaultValue: {
@@ -60,6 +65,7 @@ const meta = {
         type: { summary: "(event: ChangeEvent<HTMLInputElement>) => void" },
         defaultValue: { summary: undefined },
       },
+      action: "onChange",
     },
   },
 } satisfies Meta<typeof RadioGroup>;

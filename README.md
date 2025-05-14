@@ -44,7 +44,11 @@ pnpm install
 ```
 
 ## 🌐 Links
-- [npm](https://www.npmjs.com/package/wowds-ui)
+- npm
+  - [wowds-ui](https://www.npmjs.com/package/wowds-ui) : 공통 UI 컴포넌트를 모아둔 패키지
+  - [wowds-icons](https://www.npmjs.com/package/wowds-icons) : 디자인 시스템에서 사용하는 아이콘들을 SVG 또는 컴포넌트 형태로 제공하는 패키지
+  - [wowds-tokens](https://www.npmjs.com/package/wowds-tokens) : 색상, 타이포그래피, 여백 등 디자인 토큰을 정의한 패키지
+  - [wowds-theme](https://www.npmjs.com/package/wowds-theme) : Panda CSS에서 사용할 수 있는 테마 설정과 config를 담고 있는 설정 패키지
 - [storybook](https://wow-design-system-wow-ui.vercel.app/?path=/docs/ui-avatar--docs)
 - [wow-docs](https://wow-design-system-wow-docs.vercel.app/overview)
 

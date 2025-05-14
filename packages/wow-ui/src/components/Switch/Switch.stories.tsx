@@ -56,6 +56,7 @@ const meta = {
         type: { summary: "() => void" },
       },
       control: false,
+      action: "changed",
     },
     onClick: {
       description: "스위치를 클릭했을 때 호출되는 함수입니다.",
@@ -63,6 +64,7 @@ const meta = {
         type: { summary: "() => void" },
       },
       control: false,
+      action: "clicked",
     },
     onKeyDown: {
       description:
@@ -71,6 +73,7 @@ const meta = {
         type: { summary: "() => void" },
       },
       control: false,
+      action: "keydown",
     },
     onMouseEnter: {
       description: "마우스가 스위치 위로 진입할 때 호출되는 함수입니다.",
@@ -78,6 +81,7 @@ const meta = {
         type: { summary: "() => void" },
       },
       control: false,
+      action: "mouseenter",
     },
     onMouseLeave: {
       description: "마우스가 스위치에서 벗어날 때 호출되는 함수입니다.",
@@ -85,6 +89,7 @@ const meta = {
         type: { summary: "() => void" },
       },
       control: false,
+      action: "mouseleave",
     },
     inputProps: {
       description:
@@ -93,7 +98,9 @@ const meta = {
         type: { summary: "InputHTMLAttributes<HTMLInputElement>" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
     style: {
       description: "스위치의 커스텀 스타일을 설정합니다.",
@@ -101,7 +108,9 @@ const meta = {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
     className: {
       description: "스위치에 전달하는 커스텀 클래스를 설정합니다.",
@@ -111,6 +120,13 @@ const meta = {
       control: {
         type: "text",
       },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
+      control: false,
     },
   },
 } satisfies Meta<typeof Switch>;
@@ -122,6 +138,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     value: "switch",
+    onChange: undefined,
   },
 };
 
@@ -129,6 +146,7 @@ export const DefaultChecked: Story = {
   args: {
     defaultChecked: true,
     value: "switch",
+    onChange: undefined,
   },
 };
 
@@ -143,6 +161,7 @@ export const WithText: Story = {
   args: {
     label: "Label",
     value: "switch",
+    onChange: undefined,
   },
 };
 

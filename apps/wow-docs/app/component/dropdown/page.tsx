@@ -11,24 +11,35 @@ import DropDownOption from "wowds-ui/DropDownOption";
 
 import { ComponentTab } from "@/component/dropdown/_components/ComponentTab";
 import { GuidelineTab } from "@/component/dropdown/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Dropdown") ?? {};
 
 export const metadata: Metadata = {
-  title: "DropDown",
-  description: "와우 디자인 시스템의 dropdown component 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const DropDownComponentPage = () => {
-  const dropdownPageData = componentItems.find(
-    (item) => item.title === "Dropdown"
-  );
-
   return (
     <>
-      <Title
-        main={dropdownPageData?.title ?? ""}
-        sub={dropdownPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card className={cardStyle}>
         <DropDown label="Label" placeholder="선택하세요" style={dropdownStyle}>

@@ -9,23 +9,35 @@ import Checkbox from "wowds-ui/Checkbox";
 
 import ComponentTab from "@/component/checkbox/_components/ComponentTab";
 import GuidelineTab from "@/component/checkbox/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Checkbox") ?? {};
 
 export const metadata: Metadata = {
-  title: "Checkbox",
-  description: "와우 디자인 시스템의 Checkbox 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const CheckboxComponentPage = () => {
-  const CheckboxPageData = componentItems.find(
-    (item) => item.title === "Checkbox"
-  );
   return (
     <>
-      <Title
-        main={CheckboxPageData?.title ?? ""}
-        sub={CheckboxPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card className={cardStyle}>
         <Checkbox checked label="Text" />

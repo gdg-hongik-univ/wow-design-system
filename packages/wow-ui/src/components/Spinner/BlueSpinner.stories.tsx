@@ -16,7 +16,9 @@ const meta = {
         type: { summary: "CSSProperties['width']" },
         defaultValue: { summary: "223px" },
       },
-      control: false,
+      control: {
+        type: "text",
+      },
     },
     height: {
       description: "스피너의 높이를 나타냅니다.",
@@ -24,7 +26,9 @@ const meta = {
         type: { summary: "CSSProperties['height']" },
         defaultValue: { summary: "200px" },
       },
-      control: false,
+      control: {
+        type: "text",
+      },
     },
   },
 } satisfies Meta<typeof BlueSpinner>;

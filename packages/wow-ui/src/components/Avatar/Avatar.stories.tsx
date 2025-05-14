@@ -72,7 +72,11 @@ const meta = {
       },
     },
     ref: {
-      description: "'ref'를 사용하여 컴포넌트에 직접 접근할 수 있습니다.",
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
+      control: false,
     },
   },
 } satisfies Meta<typeof Avatar>;

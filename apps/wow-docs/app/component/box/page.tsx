@@ -2,26 +2,41 @@ import Card from "@components/Card";
 import ComponentDetailTabs from "@components/ComponentDetailTabs";
 import Space from "@components/Space";
 import Title from "@components/Text/Title";
-import { css } from "@styled-system/css";
+import { componentItems } from "@constants/pageData";
 import type { Metadata } from "next/types";
 import Box from "wowds-ui/Box";
 
 import ComponentTab from "@/component/box/_component/ComponentTab";
 import GuidelineTab from "@/component/box/_component/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Box") ?? {};
 
 export const metadata: Metadata = {
-  title: "Box",
-  description: "와우 디자인 시스템의 Box입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const BoxPage = () => {
   return (
     <>
-      <Title
-        main="Box"
-        sub="내부 요소로 연관성 있는 정보들을 담는 컴포넌트입니다."
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card style={{ padding: "120px 132px", gap: 24 }}>
         <Box subText="Subtext" text="Text" variant="text"></Box>

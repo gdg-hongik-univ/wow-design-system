@@ -7,21 +7,35 @@ import type { Metadata } from "next/types";
 import ComponentTab from "@/component/table/_component/ComponentTab";
 import GuidelineTab from "@/component/table/_component/GuidelineTab";
 import TableCard from "@/component/table/_component/TableCard";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Table") ?? {};
 
 export const metadata: Metadata = {
-  title: "Table",
-  description: "와우 디자인 시스템의 Table 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const TablePage = () => {
-  const tablePageData = componentItems.find((item) => item.title === "Table");
   return (
     <section aria-label="Table 컴포넌트 소개 페이지입니다.">
-      <Title
-        main={tablePageData?.title ?? ""}
-        sub={tablePageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <TableCard />
       <Space height={92} />

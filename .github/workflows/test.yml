@@ -38,9 +38,17 @@ jobs:
         run: pnpm install --no-frozen-lockfile
         working-directory: packages/wow-ui
 
+      - name: Install Playwright
+        run: pnpm dlx playwright install --with-deps && npx playwright install
+        working-directory: packages/wow-ui
+
       - name: Build Packages
         run: pnpm build
 
-      - name: Run Tests
+      - name: Run jest tests
         run: pnpm test
+        working-directory: packages/wow-ui
+
+      - name: Run playwright tests
+        run: pnpm playwright test --browser=all
         working-directory: packages/wow-ui

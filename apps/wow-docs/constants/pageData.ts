@@ -1,5 +1,17 @@
 import { routePath } from "@constants/routePath";
 
+export const foundationPageData = {
+  title: "Foundation",
+  description:
+    "파운데이션은 가장 기초적인 디자인 요소로, 일관된 디자인을 위해 다음의 규칙에 맞게 사용합니다.",
+  href: routePath.foundation.base,
+};
+export const componentPageData = {
+  title: "Component",
+  description:
+    "컴포넌트는 기능을 수행할 수 있는 최소 단위로,일관된 UI와 효율적인 개발을 위해 사용합니다.",
+  href: routePath.component.base,
+};
 export const foundationItems = [
   {
     title: "Color",

@@ -60,6 +60,7 @@ const meta = {
       description: "칩에 들어가게 될 텍스트입니다.",
       table: {
         type: { summary: "string" },
+        required: true,
       },
       control: {
         type: "text",
@@ -70,14 +71,14 @@ const meta = {
       table: {
         type: { summary: "() => void" },
       },
-      control: false,
+      action: "onClick",
     },
     onDelete: {
       description: "칩에 대한 필터를 제거하기 위한 함수입니다.",
       table: {
         type: { summary: "() => void" },
       },
-      control: false,
+      action: "onDelete",
     },
     onKeyDown: {
       description:
@@ -85,13 +86,31 @@ const meta = {
       table: {
         type: { summary: "() => void" },
       },
-      control: false,
+      action: "onKeyDown",
     },
     style: {
       description: "칩의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
+      },
+      control: {
+        type: "object",
+      },
+    },
+    className: {
+      description: "칩에 전달하는 커스텀 클래스를 설정합니다.",
+      table: {
+        type: { summary: "string" },
+      },
+      control: {
+        type: "text",
+      },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
       },
       control: false,
     },

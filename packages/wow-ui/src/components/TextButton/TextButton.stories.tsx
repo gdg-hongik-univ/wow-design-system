@@ -10,6 +10,16 @@ const meta = {
     componentSubtitle: "텍스트 버튼 컴포넌트",
   },
   argTypes: {
+    text: {
+      description: "텍스트 버튼의 텍스트를 나타냅니다.",
+      table: {
+        type: { summary: "string" },
+        required: true,
+      },
+      control: {
+        type: "text",
+      },
+    },
     label: {
       description: "텍스트 버튼의 라벨을 나타냅니다.",
       table: {
@@ -42,24 +52,24 @@ const meta = {
         type: { summary: "lg | sm" },
         defaultValue: { summary: "lg" },
       },
+      options: ["lg", "sm"],
       control: {
         type: "radio",
-        options: ["lg", "sm"],
       },
     },
     style: {
-      description: "텍스트 버튼의 커스텀 스타일을 나타냅니다.",
+      description: "텍스트 버튼의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
       },
-      control: false,
+      control: { type: "object" },
     },
     className: {
-      description: "텍스트 버튼에 전달하는 커스텀 클래스를 나타냅니다.",
+      description: "텍스트 버튼에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
-      control: false,
+      control: { type: "text" },
     },
     ref: {
       description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",

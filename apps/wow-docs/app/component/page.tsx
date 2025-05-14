@@ -1,25 +1,38 @@
 import Space from "@components/Space";
 import Title from "@components/Text/Title";
-import { componentItems } from "@constants/pageData";
+import { componentItems, componentPageData } from "@constants/pageData";
 import { css } from "@styled-system/css";
 import { Grid } from "@styled-system/jsx";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Component",
-  description: "와우 디자인 시스템의 component 입니다.",
-};
+import { metadata as defaultMetaData } from "@/layout";
 
+const { title, description, href } = componentPageData;
+
+export const metadata: Metadata = {
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: {
+    canonical: href,
+  },
+};
 const ComponentPage = () => {
   return (
     <>
-      <Title
-        main="Component"
-        sub="컴포넌트는 기능을 수행할 수 있는 최소 단위로,일관된 UI와 효율적인 개발을 위해 사용합니다."
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={68} />
       <Grid gap="22px" gridTemplateColumns="repeat(3, 1fr)">
         {componentItems.map((item) => (

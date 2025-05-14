@@ -7,24 +7,35 @@ import type { Metadata } from "next/types";
 import ComponentTab from "@/component/pagination/_component/ComponentTab";
 import GuidelineTab from "@/component/pagination/_component/GuidelineTab";
 import PaginationCard from "@/component/pagination/_component/PaginationCard";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Pagination") ?? {};
 
 export const metadata: Metadata = {
-  title: "Pagination",
-  description: "와우 디자인 시스템의 Pagination 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const PaginationPage = () => {
-  const paginationPageData = componentItems.find(
-    (item) => item.title === "Pagination"
-  );
-
   return (
     <section>
-      <Title
-        main={paginationPageData?.title ?? ""}
-        sub={paginationPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <PaginationCard />
       <Space height={92} />

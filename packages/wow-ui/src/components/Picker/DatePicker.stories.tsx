@@ -27,12 +27,18 @@ const meta = {
         type: { summary: "string" },
         defaultValue: { summary: undefined },
       },
+      control: {
+        type: "text",
+      },
     },
     selected: {
       description: "DatePicker의 선택된 날짜 값을 나타냅니다.",
       table: {
         type: { summary: "Date" },
         defaultValue: { summary: undefined },
+      },
+      control: {
+        type: "object",
       },
     },
     onSelect: {
@@ -43,6 +49,7 @@ const meta = {
           summary: undefined,
         },
       },
+      action: "onSelect",
     },
     placeholder: {
       description:
@@ -50,6 +57,9 @@ const meta = {
       table: {
         type: { summary: "string" },
         defaultValue: { summary: undefined },
+      },
+      control: {
+        type: "text",
       },
     },
   },

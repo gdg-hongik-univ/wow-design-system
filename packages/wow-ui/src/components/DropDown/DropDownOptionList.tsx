@@ -64,12 +64,11 @@ const DropDownOptionList = ({
 
   return (
     <styled.ul
-      aria-hidden={!open}
       aria-labelledby={`${dropdownId}-trigger`}
       id={`${dropdownId}-option-list`}
       ref={listRef}
       role="listbox"
-      tabIndex={0}
+      tabIndex={-1}
       visibility={open ? "visible" : "hidden"}
       className={dropdownContentStyle({
         type: hasCustomTrigger ? "custom" : "default",

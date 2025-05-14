@@ -15,8 +15,22 @@ const meta = {
         rules: [{ id: "color-contrast", enabled: false }],
       },
     },
+    docs: {
+      description: {
+        component:
+          "Thead와 Th 로 테이블 헤더를 구성합니다. Tbody, Tr,Td 로 테이블 컨텐츠를 구성합니다.",
+      },
+    },
   },
   argTypes: {
+    children: {
+      description: "Thead, Tbody, Tr, Th, Td를 children 으로 받습니다.",
+      table: {
+        type: { summary: "ReactNode" },
+        required: true,
+      },
+      control: false,
+    },
     tableCaption: {
       description: "테이블에 대한 설명을 나타내는 캡션입니다.",
       table: {
@@ -41,20 +55,18 @@ const meta = {
       table: {
         type: { summary: "number[]" },
       },
+      control: {
+        type: "text",
+      },
     },
     onChange: {
       description: "외부 활성 상태가 변경될 때 호출되는 함수입니다.",
       table: {
         type: { summary: "(selectedRows: number[]) => void" },
       },
+      action: "changed",
     },
-    className: {
-      description: "테이블 컴포넌트에게 전달할 className을 정의합니다.",
-      table: {
-        type: { summary: "string" },
-      },
-      control: "text",
-    },
+
     fullWidth: {
       description: "테이블 컴포넌트의 가로 길이를 결정할 수 있습니다.",
       table: {
@@ -64,15 +76,31 @@ const meta = {
       control: "boolean",
     },
     style: {
-      description: "테이블 커스텀 스타일을 설정합니다.",
+      description: "테이블의 커스텀 스타일을 설정합니다.",
       table: {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
+      control: {
+        type: "object",
+      },
+    },
+    className: {
+      description: "테이블 컴포넌트에 전달할 커스텀 클래스를 설정합니다.",
+      table: {
+        type: { summary: "string" },
+      },
+      control: "text",
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
       control: false,
     },
   },
-} satisfies Meta;
+} satisfies Meta<typeof Table>;
 
 export default meta;
 

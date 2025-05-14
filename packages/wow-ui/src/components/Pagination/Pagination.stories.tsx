@@ -49,31 +49,42 @@ const meta = {
       table: {
         type: { summary: "(page: number) => void" },
       },
+      action: "changed",
     },
     pageButtonBackgroundColor: {
       description: "페이지네이션 컴포넌트 버튼 색을 변경합니다.",
       table: {
         type: { summary: "ColorToken" },
       },
+      control: { type: "radio" },
+      options: ["textBlack", "primary", "red.400"],
     },
     style: {
       description:
-        "페이지네이션 컴포넌트에 커스텀하게 전달할 style입니다 배경색 등을 변경할 수 있습니다.",
+        "페이지네이션의 커스텀 스타일을 설정합니다. 배경색 등을 변경할 수 있습니다.",
       table: {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
     className: {
-      description:
-        "페이지네이션 컴포넌트에 전달하는 커스텀 클래스를 설정합니다.",
+      description: "페이지네이션에 전달하는 커스텀 클래스를 설정합니다.",
       table: {
         type: { summary: "string" },
       },
       control: {
         type: "text",
       },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
+      control: false,
     },
   },
 } satisfies Meta<typeof Pagination>;

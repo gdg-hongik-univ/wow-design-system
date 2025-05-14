@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useEffect } from "react";
-import { Warn } from "wowds-icons";
 
 import Button from "@/components/Button";
 
@@ -53,7 +52,7 @@ const meta: Meta<typeof Toast> = {
     },
     id: {
       description: "Toast 컴포넌트의 id를 나타냅니다.",
-      control: false,
+      control: { type: "text" },
     },
     onClickArrowIcon: {
       description:
@@ -73,11 +72,18 @@ const meta: Meta<typeof Toast> = {
       control: { type: "number" },
     },
     style: {
-      description: "Toast에 커스텀 스타일을 적용하기 위한 객체를 나타냅니다.",
-      control: false,
+      description: "Toast에 커스텀 스타일을 설정합니다.",
+      control: { type: "object" },
     },
     className: {
-      description: "Toast에 커스텀 클래스를 적용하기 위한 문자열을 나타냅니다.",
+      description: "Toast에 커스텀 클래스를 설정합니다.",
+      control: { type: "text" },
+    },
+    ref: {
+      description: "렌더링된 요소 또는 컴포넌트에 연결할 ref를 나타냅니다.",
+      table: {
+        type: { summary: 'ComponentPropsWithRef<T>["ref"]' },
+      },
       control: false,
     },
   },

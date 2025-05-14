@@ -1,6 +1,6 @@
 {
   "name": "wowds-ui",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "description": "",
   "author": "gdsc-hongik",
   "repository": {
@@ -20,15 +20,15 @@
   "type": "module",
   "exports": {
     "./styles.css": "./dist/styles.css",
-    "./ToastProvider": {
-      "types": "./dist/components/Toast/ToastProvider.d.ts",
-      "require": "./dist/ToastProvider.cjs",
-      "import": "./dist/ToastProvider.js"
-    },
     "./Toast": {
       "types": "./dist/components/Toast/index.d.ts",
       "require": "./dist/Toast.cjs",
       "import": "./dist/Toast.js"
+    },
+    "./ToastProvider": {
+      "types": "./dist/components/Toast/ToastProvider.d.ts",
+      "require": "./dist/ToastProvider.cjs",
+      "import": "./dist/ToastProvider.js"
     },
     "./useToast": {
       "types": "./dist/components/Toast/useToast.d.ts",
@@ -50,6 +50,11 @@
       "require": "./dist/Tag.cjs",
       "import": "./dist/Tag.js"
     },
+    "./Tabs": {
+      "types": "./dist/components/Tabs/index.d.ts",
+      "require": "./dist/Tabs.cjs",
+      "import": "./dist/Tabs.js"
+    },
     "./TabsContent": {
       "types": "./dist/components/Tabs/TabsContent.d.ts",
       "require": "./dist/TabsContent.cjs",
@@ -64,11 +69,6 @@
       "types": "./dist/components/Tabs/TabsList.d.ts",
       "require": "./dist/TabsList.cjs",
       "import": "./dist/TabsList.js"
-    },
-    "./Tabs": {
-      "types": "./dist/components/Tabs/index.d.ts",
-      "require": "./dist/Tabs.cjs",
-      "import": "./dist/Tabs.js"
     },
     "./Table": {
       "types": "./dist/components/Table/Table.d.ts",
@@ -236,7 +236,12 @@
       "import": "./dist/ActionSheet.js"
     }
   },
-  "keywords": [],
+  "keywords": [
+    "디자인시스템",
+    "wow-design-system",
+    "wowds-ui",
+    "component"
+  ],
   "license": "ISC",
   "scripts": {
     "build": "pnpm generate:build-config && rm -rf dist && rollup -c --bundleConfigAsCjs && tsc-alias && panda cssgen --outfile dist/styles.css",
@@ -286,11 +291,11 @@
     "wowds-icons": "workspace:^"
   },
   "peerDependencies": {
-    "next": "^14.1.1",
+    "next": ">=14.2.25",
     "react": "^18.2.0"
   },
   "bugs": {
-    "url": "https://github.com/GDSC-Hongik/wow-design-system/issues"
+    "url": "https://github.com/gdg-hongik-univ/wow-design-system/issues"
   },
-  "homepage": "https://github.com/GDSC-Hongik/wow-design-system#readme"
+  "homepage": "https://github.com/gdg-hongik-univ/wow-design-system#readme"
 }

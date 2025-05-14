@@ -1,6 +1,7 @@
 import "@/globals.css";
 
 import Navbar from "@components/Navbar/Navbar";
+import { environment } from "@constants/environment";
 import { styled } from "@styled-system/jsx";
 import type { Metadata } from "next";
 
@@ -11,17 +12,16 @@ export const metadata: Metadata = {
   description: "GDSC Hongik 디자인 시스템",
   keywords: ["GDSC", "Hongik", "디자인 시스템", "와우 디자인 시스템"],
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_CONSOLE_KEY,
+    google: environment.GOOGLE_CONSOLE_KEY,
     other: {
-      "naver-site-verification":
-        process.env.NEXT_PUBLIC_NAVER_CONSOLE_KEY ?? "",
+      "naver-site-verification": environment.NAVER_CONSOLE_KEY ?? "",
     },
   },
   metadataBase: new URL(PRODUCTION_URL),
   openGraph: {
     title: "와우 디자인 시스템",
     description: "GDSC Hongik 디자인 시스템",
-    url: `${PRODUCTION_URL}`,
+    url: PRODUCTION_URL,
     images: { url: "/images/og-image.png" },
     locale: "ko_KR",
     siteName: "와우 디자인 시스템",
@@ -43,6 +43,9 @@ export const metadata: Metadata = {
         url: "/images/logo.svg",
       },
     ],
+  },
+  alternates: {
+    canonical: PRODUCTION_URL,
   },
   robots: {
     index: true,

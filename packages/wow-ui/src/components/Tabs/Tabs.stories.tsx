@@ -30,6 +30,7 @@ const meta: Meta<TabsProps> = {
       description: "TabsList,TabsItem,TabsContent 를 children 으로 받습니다.",
       table: {
         type: { summary: "ReactNode" },
+        required: true,
       },
       control: false,
     },
@@ -67,7 +68,9 @@ const meta: Meta<TabsProps> = {
         type: { summary: "CSSProperties" },
         defaultValue: { summary: "{}" },
       },
-      control: false,
+      control: {
+        type: "object",
+      },
     },
     className: {
       description: "탭에 전달하는 커스텀 클래스를 설정합니다.",

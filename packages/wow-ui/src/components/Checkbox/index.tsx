@@ -87,7 +87,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <styled.label
         alignItems="center"
-        cursor={disabled ? "none" : "pointer"}
+        cursor={disabled ? "not-allowed" : "pointer"}
         display="flex"
         flexDirection={position === "vertical" ? "column-reverse" : "row"}
         gap={label ? "xs" : "0px"}
@@ -121,6 +121,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {checked && (
             <styled.span
               left="50%"
+              pointerEvents="none"
               position="absolute"
               top="50%"
               transform="translate(-50%, -50%)"

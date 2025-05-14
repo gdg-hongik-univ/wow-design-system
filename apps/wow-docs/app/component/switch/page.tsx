@@ -8,22 +8,35 @@ import Switch from "wowds-ui/Switch";
 
 import ComponentTab from "@/component/switch/_components/ComponentTab";
 import GuidelineTab from "@/component/switch/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Switch") ?? {};
 
 export const metadata: Metadata = {
-  title: "Switch",
-  description: "와우 디자인 시스템의 switch component 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const SwitchPage = () => {
-  const SwitchPageData = componentItems.find((item) => item.title === "Switch");
-
   return (
     <>
-      <Title
-        main={SwitchPageData?.title ?? ""}
-        sub={SwitchPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card
         style={{

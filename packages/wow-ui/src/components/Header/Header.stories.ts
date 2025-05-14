@@ -17,7 +17,7 @@ const meta = {
   argTypes: {
     variant: {
       control: {
-        type: "select",
+        type: "radio",
       },
       options: ["username", "login", "none"],
       table: {

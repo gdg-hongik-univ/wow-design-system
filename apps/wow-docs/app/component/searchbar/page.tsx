@@ -8,24 +8,35 @@ import SearchBar from "wowds-ui/SearchBar";
 
 import { ComponentTab } from "@/component/searchbar/_components/ComponentTab";
 import GuidelineTab from "@/component/searchbar/_components/GuidelineTab";
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = componentItems.find((item) => item.title === "Search Bar") ?? {};
 
 export const metadata: Metadata = {
-  title: "SeachBar",
-  description: "와우 디자인 시스템의 search bar component 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const SearchBarComponentPage = () => {
-  const searchBarPageData = componentItems.find(
-    (item) => item.title === "Search Bar"
-  );
-
   return (
     <>
-      <Title
-        main={searchBarPageData?.title ?? ""}
-        sub={searchBarPageData?.description ?? ""}
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={40} />
       <Card>
         <SearchBar defaultValue="Text" />

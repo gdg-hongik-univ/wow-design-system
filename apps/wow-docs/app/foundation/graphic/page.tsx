@@ -2,15 +2,36 @@ import Card from "@components/Card";
 import Space from "@components/Space";
 import Text from "@components/Text";
 import Title from "@components/Text/Title";
+import { foundationItems } from "@constants/pageData";
 import { css } from "@styled-system/css";
 import { Flex } from "@styled-system/jsx";
 import Image from "next/image";
 import type { Metadata } from "next/types";
 import Divider from "wowds-ui/Divider";
 
+import { metadata as defaultMetaData } from "@/layout";
+
+const {
+  title = "",
+  description = "",
+  href = "",
+} = foundationItems.find((item) => item.title === "Graphic") ?? {};
+
 export const metadata: Metadata = {
-  title: "Graphic",
-  description: "와우 디자인 시스템의 Graphic 입니다.",
+  title: title,
+  description: description,
+  openGraph: {
+    ...defaultMetaData.openGraph,
+    title: title,
+    description: description,
+    url: href,
+  },
+  twitter: {
+    ...defaultMetaData.twitter,
+    title: title,
+    description: description,
+  },
+  alternates: { canonical: href },
 };
 
 const graphicExampleItems = [
@@ -34,11 +55,7 @@ const graphicExampleItems = [
 const GraphicPage = () => {
   return (
     <>
-      <Title
-        main="Graphic"
-        sub="그래픽 이미지를 통해 와우 디자인 시스템의 브랜드 아이덴티티를 일관되게 전달합니다."
-        variant="header"
-      />
+      <Title main={title} sub={description} variant="header" />
       <Space height={68} />
       <Text as="h2" typo="display2WebPage">
         Theme

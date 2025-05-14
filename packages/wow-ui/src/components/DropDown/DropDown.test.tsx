@@ -74,8 +74,8 @@ describe("DropDown component", () => {
     await userEvent.click(document.body);
 
     await waitFor(() => {
-      const dropdown = screen.queryByRole("listbox");
-      expect(dropdown).toBeNull();
+      const dropdown = screen.queryByRole("combobox");
+      expect(dropdown).toHaveAttribute("aria-expanded", "false");
     });
   });
 });

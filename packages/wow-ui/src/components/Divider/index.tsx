@@ -1,12 +1,7 @@
 import { cva } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
+import { clsx } from "clsx";
 import type { CSSProperties } from "react";
-
-export interface DividerProps {
-  type?: "light" | "dark";
-  style?: CSSProperties;
-  className?: string;
-}
 
 /**
  * @description 디바이더 컴포넌트의 속성을 정의합니다.
@@ -16,13 +11,21 @@ export interface DividerProps {
  * @param {string} [className] 디바이더에 전달하는 커스텀 클래스를 설정합니다.
  * @param {ComponentPropsWithoutRef<T>} rest 렌더링된 요소 또는 컴포넌트에 전달할 추가 props.
  */
+export interface DividerProps {
+  type?: "light" | "dark";
+  style?: CSSProperties;
+  className?: string;
+}
 
-const Divider = ({ type = "light", ...rest }: DividerProps) => {
+const Divider = ({ type = "light", className, ...rest }: DividerProps) => {
   return (
     <styled.div
-      className={dividerStyle({
-        type,
-      })}
+      className={clsx(
+        className,
+        dividerStyle({
+          type,
+        })
+      )}
       {...rest}
     />
   );
