@@ -27,7 +27,7 @@ const TabsList = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (!isControlled && !selectedValue && values.size > 0) {
-      setSelectedValue(values.values().next().value);
+      setSelectedValue(values.values().next().value || "");
     }
   }, []);
 
