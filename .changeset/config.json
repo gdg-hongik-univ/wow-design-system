@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
   "changelog": [
     "@changesets/changelog-git",
-    { "repo": "GDSC-Hongik/wow-design-system" }
+    { "repo": "gdg-hongik-univ/wow-design-system" }
   ],
   "commit": false,
   "fixed": [],
