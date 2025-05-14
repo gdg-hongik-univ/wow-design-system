@@ -9,6 +9,7 @@ import type {
 import { forwardRef, useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
+import { useMergeRefs } from "@/hooks/useMergeRefs";
 import type { DefaultProps } from "@/types/DefaultProps";
 
 import ActionSheetBody from "./ActionSheetBody";
@@ -40,11 +41,12 @@ export interface ActionSheetProps extends DefaultProps {
   onClose: () => void;
 }
 
+const READY_FOR_TRANSITION = 100;
+
 const ActionSheet = forwardRef<HTMLDialogElement, ActionSheetProps>(
   ({ isOpen, onClose, children, className, ...rest }, ref) => {
-    const READY_FOR_TRANSITION = 100;
     const defaultRef = useRef<HTMLDialogElement>(null);
-    const dialogRef = ref && typeof ref !== "function" ? ref : defaultRef;
+    const dialogRef = useMergeRefs(ref, defaultRef);
     const [state, setState] = useState<"open" | "close">("close");
 
     const handleClose = () => {
