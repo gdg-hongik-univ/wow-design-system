@@ -1,6 +1,7 @@
 "use client";
 import { cva } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
+import clsx from "clsx";
 import type { ReactNode } from "react";
 import { forwardRef, useEffect, useState } from "react";
 
@@ -75,6 +76,7 @@ const Chip: ChipComponent & { displayName?: string } = forwardRef(
       defaultChecked = false,
       disabled = false,
       style,
+      ...props
     }: ChipProps<T>,
     ref: any
   ) => {
@@ -105,6 +107,8 @@ const Chip: ChipComponent & { displayName?: string } = forwardRef(
       }
     };
 
+    const { className, ...restProps } = props;
+
     return (
       <Component
         aria-checked={clickable ? ischecked : undefined}
@@ -115,12 +119,16 @@ const Chip: ChipComponent & { displayName?: string } = forwardRef(
         ref={ref}
         role={clickable ? "checkbox" : undefined}
         style={style}
-        className={chip({
-          clickable: disabled ? false : clickable,
-          disabled: disabled,
-        })}
+        className={clsx(
+          chip({
+            clickable: disabled ? false : clickable,
+            disabled: disabled,
+          }),
+          className
+        )}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        {...restProps}
       >
         <ChipLabel disabled={disabled} ischecked={ischecked} label={label} />
       </Component>

@@ -1,10 +1,11 @@
 "use client";
 
 import { styled } from "@styled-system/jsx";
-import type { CSSProperties } from "react";
+import type { ReactNode } from "react";
 import { Close } from "wowds-icons";
 
 import { useActionSheetContext } from "@/components/ActionSheet/ActionSheetContext";
+import type { DefaultProps } from "@/types/DefaultProps";
 
 /**
  * @description ActionSheet의 헤더 요소를 나타내는 ActionSheetHeader 컴포넌트입니다.
@@ -14,11 +15,9 @@ import { useActionSheetContext } from "@/components/ActionSheet/ActionSheetConte
  * @param {CSSProperties} [style] 액션시트 헤더의 커스텀 스타일.
  * @param {string} [className] 액션시트 헤더에 전달하는 커스텀 클래스.
  */
-export interface ActionSheetHeaderProps {
-  text: string;
-  subText: string;
-  style?: CSSProperties;
-  className?: string;
+export interface ActionSheetHeaderProps extends DefaultProps {
+  text: string | ReactNode;
+  subText?: string | ReactNode;
 }
 
 const ActionSheetHeader = ({

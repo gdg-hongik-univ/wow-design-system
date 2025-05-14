@@ -1,6 +1,1 @@
-<svg width="912" height="160" viewBox="0 0 912 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="912" height="160" fill="white"/>
-<path d="M130.5 64C130.5 59.8579 133.858 56.5 138 56.5H774C778.142 56.5 781.5 59.8579 781.5 64V96C781.5 100.142 778.142 103.5 774 103.5H138C133.858 103.5 130.5 100.142 130.5 96V64Z" fill="white"/>
-<path d="M130.5 64C130.5 59.8579 133.858 56.5 138 56.5H774C778.142 56.5 781.5 59.8579 781.5 64V96C781.5 100.142 778.142 103.5 774 103.5H138C133.858 103.5 130.5 100.142 130.5 96V64Z" stroke="#C2C2C2"/>
-<path d="M758 82H154" stroke="#E1E1E1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="912" height="160" fill="none" viewBox="0 0 912 160"><path fill="#fff" d="M0 0h912v160H0z"/><path fill="#fff" d="M130.5 64a7.5 7.5 0 0 1 7.5-7.5h636a7.5 7.5 0 0 1 7.5 7.5v32a7.5 7.5 0 0 1-7.5 7.5H138a7.5 7.5 0 0 1-7.5-7.5z"/><path stroke="#C2C2C2" d="M130.5 64a7.5 7.5 0 0 1 7.5-7.5h636a7.5 7.5 0 0 1 7.5 7.5v32a7.5 7.5 0 0 1-7.5 7.5H138a7.5 7.5 0 0 1-7.5-7.5z"/><path stroke="#E1E1E1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M758 82H154"/></svg>

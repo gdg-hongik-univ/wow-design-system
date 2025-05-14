@@ -1,6 +1,6 @@
 {
   "name": "wowds-ui",
-  "version": "0.2.0",
+  "version": "0.2.4",
   "description": "",
   "author": "gdsc-hongik",
   "repository": {
@@ -20,15 +20,15 @@
   "type": "module",
   "exports": {
     "./styles.css": "./dist/styles.css",
-    "./Toast": {
-      "types": "./dist/components/Toast/index.d.ts",
-      "require": "./dist/Toast.cjs",
-      "import": "./dist/Toast.js"
-    },
     "./ToastProvider": {
       "types": "./dist/components/Toast/ToastProvider.d.ts",
       "require": "./dist/ToastProvider.cjs",
       "import": "./dist/ToastProvider.js"
+    },
+    "./Toast": {
+      "types": "./dist/components/Toast/index.d.ts",
+      "require": "./dist/Toast.cjs",
+      "import": "./dist/Toast.js"
     },
     "./useToast": {
       "types": "./dist/components/Toast/useToast.d.ts",
@@ -50,11 +50,6 @@
       "require": "./dist/Tag.cjs",
       "import": "./dist/Tag.js"
     },
-    "./Tabs": {
-      "types": "./dist/components/Tabs/index.d.ts",
-      "require": "./dist/Tabs.cjs",
-      "import": "./dist/Tabs.js"
-    },
     "./TabsContent": {
       "types": "./dist/components/Tabs/TabsContent.d.ts",
       "require": "./dist/TabsContent.cjs",
@@ -69,6 +64,11 @@
       "types": "./dist/components/Tabs/TabsList.d.ts",
       "require": "./dist/TabsList.cjs",
       "import": "./dist/TabsList.js"
+    },
+    "./Tabs": {
+      "types": "./dist/components/Tabs/index.d.ts",
+      "require": "./dist/Tabs.cjs",
+      "import": "./dist/Tabs.js"
     },
     "./Table": {
       "types": "./dist/components/Table/Table.d.ts",
@@ -260,13 +260,14 @@
     "@storybook/nextjs": "^8.1.9",
     "@storybook/react": "^8.1.9",
     "@storybook/test": "^8.1.9",
-    "@storybook/test-runner": "^0.18.2",
+    "@storybook/test-runner": "^0.22.0",
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "axe-playwright": "^2.0.1",
+    "@types/uuid": "^10.0.0",
+    "axe-playwright": "^2.1.0",
     "chromatic": "^11.3.0",
     "clsx": "^2.1.1",
     "eslint": "^8.57.0",
@@ -275,8 +276,7 @@
     "plop": "^4.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "storybook": "^8.1.9",
-    "typescript": "^5.3.3",
-    "@types/uuid": "^10.0.0"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "clsx": "^2.1.1",

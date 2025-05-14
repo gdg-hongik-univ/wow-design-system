@@ -16,6 +16,15 @@ const meta = {
         rules: [{ id: "color-contrast", enabled: false }],
       },
     },
+    docs: {
+      description: {
+        component:
+          "ActionSheet.Header, ActionSheet.Body, ActionSheet.Footer를 조합해서 쓸 수 있어요.\n" +
+          "1. **Header**: 액션시트의 헤더로, Text, SubText를 포함할 수 있습니다.\n" +
+          "2. **Body**: 액션시트의 본문으로, 필요에 맞게 컨텐츠를 포함할 수 있습니다.\n" +
+          "3. **Footer**: 액션시트의 푸터로, 버튼 또는 버튼 묶음을 포함할 수 있습니다.",
+      },
+    },
   },
   argTypes: {
     isOpen: {

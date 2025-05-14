@@ -344,8 +344,12 @@ const tokens = {
     variable: "var(--z-index-dropdown)",
   },
   "zIndex.overlay": {
-    value: 9999,
+    value: 9998,
     variable: "var(--z-index-overlay)",
+  },
+  "zIndex.actionSheet": {
+    value: 9999,
+    variable: "var(--z-index-action-sheet)",
   },
   "shadows.blue": {
     value: "0px 4px 8px 0px rgba(16, 43, 74, 0.2)",

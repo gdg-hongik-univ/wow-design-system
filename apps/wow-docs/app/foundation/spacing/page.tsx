@@ -12,16 +12,16 @@ import Image from "next/image";
 import type { Metadata } from "next/types";
 import Divider from "wowds-ui/Divider";
 
-const spacingPageData = foundationItems.find(
-  (item) => item.title === "Spacing"
-);
-
 export const metadata: Metadata = {
-  title: spacingPageData?.title ?? "",
-  description: spacingPageData?.description ?? "",
+  title: "Spacing",
+  description: "와우 디자인 시스템의 spacing foundation 입니다.",
 };
 
 const SpacingPage = () => {
+  const spacingPageData = foundationItems.find(
+    (item) => item.title === "Spacing"
+  );
+
   return (
     <>
       <Title

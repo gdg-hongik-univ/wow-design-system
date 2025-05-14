@@ -1,10 +1,15 @@
 "use client";
 
-import { cva } from "@styled-system/css";
-import type { CSSProperties, ReactElement } from "react";
-import { useEffect, useRef, useState } from "react";
+import { cva, cx } from "@styled-system/css";
+import type {
+  ForwardRefExoticComponent,
+  ReactElement,
+  RefAttributes,
+} from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 
 import useClickOutside from "@/hooks/useClickOutside";
+import type { DefaultProps } from "@/types/DefaultProps";
 
 import ActionSheetBody from "./ActionSheetBody";
 import { ActionSheetContext } from "./ActionSheetContext";
@@ -20,8 +25,7 @@ import ActionSheetOverlay from "./ActionSheetOverlay";
  * @param {CSSProperties} [style] 액션시트의 커스텀 스타일.
  * @param {string} [className] 액션시트에 전달하는 커스텀 클래스.
  */
-
-export interface ActionSheetProps {
+export interface ActionSheetProps extends DefaultProps {
   children:
     | [
         ReactElement<typeof ActionSheetHeader>,
@@ -34,47 +38,61 @@ export interface ActionSheetProps {
       ];
   isOpen: boolean;
   onClose: () => void;
-  style?: CSSProperties;
-  className?: string;
 }
 
-const ActionSheet = ({
-  isOpen,
-  onClose,
-  children,
-  ...rest
-}: ActionSheetProps) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const [state, setState] = useState<"open" | "close">("close");
+const ActionSheet = forwardRef<HTMLDialogElement, ActionSheetProps>(
+  ({ isOpen, onClose, children, className, ...rest }, ref) => {
+    const READY_FOR_TRANSITION = 100;
+    const defaultRef = useRef<HTMLDialogElement>(null);
+    const dialogRef = ref && typeof ref !== "function" ? ref : defaultRef;
+    const [state, setState] = useState<"open" | "close">("close");
 
-  const handleClose = () => {
-    setState("close");
-    setTimeout(onClose, 100);
-  };
+    const handleClose = () => {
+      setState("close");
+      setTimeout(onClose, READY_FOR_TRANSITION);
+    };
 
-  useClickOutside(dialogRef, handleClose);
+    useClickOutside(dialogRef, handleClose);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const timer = setTimeout(() => setState("open"), 100);
-    return () => clearTimeout(timer);
-  }, [isOpen]);
+    useEffect(() => {
+      if (!isOpen) return;
+      const timer = setTimeout(() => setState("open"), READY_FOR_TRANSITION);
+      return () => clearTimeout(timer);
+    }, [isOpen]);
 
-  return (
-    isOpen && (
-      <ActionSheetContext.Provider value={{ onClose: handleClose }}>
-        <dialog className={dialogStyle({ state })} ref={dialogRef} {...rest}>
-          {children}
-        </dialog>
-        <ActionSheetOverlay />
-      </ActionSheetContext.Provider>
-    )
-  );
-};
+    return (
+      isOpen && (
+        <ActionSheetContext.Provider value={{ onClose: handleClose }}>
+          <dialog
+            className={cx(dialogStyle({ state }), className)}
+            ref={dialogRef}
+            {...rest}
+          >
+            {children}
+          </dialog>
+          <ActionSheetOverlay />
+        </ActionSheetContext.Provider>
+      )
+    );
+  }
+);
 
-ActionSheet.Header = ActionSheetHeader;
-ActionSheet.Body = ActionSheetBody;
-ActionSheet.Footer = ActionSheetFooter;
+export interface ActionSheetComponent
+  extends ForwardRefExoticComponent<
+    ActionSheetProps & RefAttributes<HTMLDialogElement>
+  > {
+  Header: typeof ActionSheetHeader;
+  Body: typeof ActionSheetBody;
+  Footer: typeof ActionSheetFooter;
+}
+
+const ActionSheetWithStatics = ActionSheet as ActionSheetComponent;
+ActionSheetWithStatics.Header = ActionSheetHeader;
+ActionSheetWithStatics.Body = ActionSheetBody;
+ActionSheetWithStatics.Footer = ActionSheetFooter;
+
+ActionSheetWithStatics.displayName = "ActionSheet";
+export default ActionSheetWithStatics;
 
 const dialogStyle = cva({
   base: {
@@ -98,7 +116,11 @@ const dialogStyle = cva({
     transitionDelay: "0.8",
     transitionTimingFunction: "ease-in-out",
 
-    zIndex: 9999,
+    zIndex: "actionSheet",
+
+    "@media (max-width: 768px)": {
+      width: "100%",
+    },
   },
   variants: {
     state: {
@@ -111,6 +133,3 @@ const dialogStyle = cva({
     },
   },
 });
-
-ActionSheet.displayName = "ActionSheet";
-export default ActionSheet;

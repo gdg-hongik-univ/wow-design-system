@@ -8,4 +8,7 @@ export const zIndex = defineTokens.zIndex({
   overlay: {
     value: wowZIndex.overlay,
   },
+  actionSheet: {
+    value: wowZIndex.actionSheet,
+  },
 });

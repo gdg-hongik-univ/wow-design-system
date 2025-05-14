@@ -38,6 +38,16 @@ const meta = {
         },
       },
     },
+    disabled: {
+      description: "Box가 활성 상태인지를 나타냅니다.",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+      control: {
+        type: "boolean",
+      },
+    },
     text: {
       description: "박스에 메인으로 표기할 텍스트를 입력합니다.",
       table: {

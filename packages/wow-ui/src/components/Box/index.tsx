@@ -10,6 +10,7 @@ import useCheckedState from "@/hooks/useCheckedState";
 /**
  * @description 사용자에게 보여주어야 하는 정보를 담을 수 있는 Box 컴포넌트입니다.
  * @param {ReactNode} [leftElement] Box 컴포넌트의 왼쪽에 들어갈 수 있는 요소입니다. (아이콘, 이미지 등)
+ * @param {boolean} [disabled] Box 컴포넌트의 활성 상태를 설정합니다.
  * @param {boolean} [checked] Box 컴포넌트의 타입이 "checkbox"일때 전달할 수 있는 체크박스의 상태입니다.
  * @param {string} [className] 체크박스에 전달하는 커스텀 클래스를 설정합니다.
  * @param {string} [textColor] text의 색상을 변경할 수 있습니다.
@@ -27,6 +28,7 @@ type BoxVariantType = "arrow" | "checkbox" | "text" | "warn";
 
 export interface BoxProps<T extends BoxVariantType> {
   variant?: T;
+  disabled?: boolean;
   onClick?: T extends "arrow" ? () => void : never;
   onChange?: T extends "checkbox" ? () => void : never;
   checked?: T extends "checkbox" ? boolean : never;
@@ -43,6 +45,7 @@ export interface BoxProps<T extends BoxVariantType> {
 const Box = <T extends BoxVariantType = "text">({
   leftElement,
   variant,
+  disabled = false,
   text,
   textColor,
   subText,
@@ -60,6 +63,7 @@ const Box = <T extends BoxVariantType = "text">({
   });
 
   const getStrokeColor = (status: "default" | "success" | "error") => {
+    if (disabled) return "lightDisabled";
     switch (status) {
       case "default":
         return "outline";
@@ -78,11 +82,14 @@ const Box = <T extends BoxVariantType = "text">({
   return (
     <Flex
       alignItems="center"
-      className={containerStyle({ status, variant })}
       direction="row"
       gap={variant !== "text" ? "lg" : undefined}
       id={`box-${text}`}
       justifyContent="space-between"
+      className={containerStyle({
+        status: disabled ? "disabled" : status,
+        variant: disabled ? "disabled" : variant,
+      })}
       onClick={handleArrowClick}
       {...rest}
     >
@@ -90,14 +97,14 @@ const Box = <T extends BoxVariantType = "text">({
         {leftElement}
         <Flex direction="column" gap="xxs" width="100%">
           <styled.div
-            color={textColor ? textColor : "textBlack"}
+            color={textColor ? textColor : disabled ? "sub" : "textBlack"}
             width="100%"
             {...(typeof text === "string" && { textStyle: "h3" })}
           >
             {text}
           </styled.div>
           <styled.div
-            color={subTextColor ? subTextColor : "sub"}
+            color={subTextColor ? subTextColor : disabled ? "mono.600" : "sub"}
             textStyle="body1"
             width="100%"
           >
@@ -107,7 +114,11 @@ const Box = <T extends BoxVariantType = "text">({
       </Flex>
       <div>
         {variant === "checkbox" && (
-          <Checkbox checked={checked} onClick={handleClick} />
+          <Checkbox
+            checked={checked}
+            disabled={disabled}
+            onClick={handleClick}
+          />
         )}
         {variant === "arrow" && (
           <RightArrow height={20} stroke={getStrokeColor(status)} width={20} />
@@ -141,6 +152,7 @@ const containerStyle = cva({
     },
     backgroundColor: "white",
   },
+
   variants: {
     status: {
       default: {
@@ -152,7 +164,12 @@ const containerStyle = cva({
       error: {
         borderColor: "error",
       },
+      disabled: {
+        borderColor: "lightDisabled",
+        backgroundColor: "backgroundAlternative",
+      },
     },
+
     variant: {
       arrow: {
         cursor: "pointer",
@@ -165,6 +182,9 @@ const containerStyle = cva({
       },
       warn: {
         cursor: "default",
+      },
+      disabled: {
+        cursor: "not-allowed",
       },
     },
   },

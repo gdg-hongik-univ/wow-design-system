@@ -9,7 +9,7 @@ const ActionSheetOverlay = () => {
       position="fixed"
       top={0}
       width="100vw"
-      zIndex={9998}
+      zIndex="overlay"
     />
   );
 };

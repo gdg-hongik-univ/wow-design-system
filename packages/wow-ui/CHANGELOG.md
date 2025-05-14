@@ -1,5 +1,30 @@
 # wowds-ui
 
+## 0.2.4
+
+### Patch Changes
+
+- e85792f: disabled box 배경색 변경
+- e85792f: Box 컴포넌트 disabled text 컬러 변경
+
+## 0.2.3
+
+### Patch Changes
+
+- 679eb8e: box component update
+
+## 0.2.2
+
+### Patch Changes
+
+- efeb6ab: Box 컴포넌트에 disabled 필드를 추가해요
+
+## 0.2.1
+
+### Patch Changes
+
+- 6ade301: Chip 컴포넌트의 className 속성을 props와 분리해요.
+
 ## 0.2.0
 
 ### Minor Changes
