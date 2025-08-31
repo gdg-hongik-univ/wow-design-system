@@ -10,7 +10,7 @@ type Variant = "outline" | "solid1" | "solid2";
 
 type OutlineColors = "red" | "blue" | "green" | "yellow";
 type Solid1Colors = "blue" | "yellow" | "green";
-type Solid2Colors = "blue" | "red" | "grey";
+type Solid2Colors = "blue" | "red" | "grey" | "green";
 
 type VariantColorMap = {
   outline: OutlineColors;
@@ -122,6 +122,14 @@ const TagStyle = cva({
       css: {
         backgroundColor: "monoBackgroundPressed",
         color: "sub",
+      },
+    },
+    {
+      variant: "solid2",
+      color: "green",
+      css: {
+        backgroundColor: "#E0F3E5",
+        color: "secondaryGreen",
       },
     },
   ],
