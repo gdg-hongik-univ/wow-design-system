@@ -129,13 +129,19 @@ const SwitchIcon = ({
   checked: boolean;
   pressed: boolean;
 }) => {
+  let className: string;
+  if (disabled) {
+    className = checked
+      ? switchIconStyle({ type: "disabledChecked" })
+      : switchIconStyle({ type: "disabledUnchecked" });
+  } else {
+    className = checked
+      ? switchIconStyle({ type: "checked" })
+      : switchIconStyle({ type: "unchecked" });
+  }
+
   return (
-    <span
-      {...(pressed && { "data-pressed": true })}
-      className={switchIconStyle({
-        type: disabled ? "disabled" : checked ? "checked" : "unchecked",
-      })}
-    />
+    <span {...(pressed && { "data-pressed": true })} className={className} />
   );
 };
 
@@ -231,7 +237,12 @@ const switchIconStyle = cva({
           bg: "monoBackgroundPressed",
         },
       },
-      disabled: {
+      disabledChecked: {
+        left: "1.625rem",
+        bg: "darkDisabled",
+      },
+      disabledUnchecked: {
+        left: "0.125rem",
         bg: "darkDisabled",
       },
     },
