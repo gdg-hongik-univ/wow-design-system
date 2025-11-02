@@ -1,5 +1,12 @@
 # wowds-ui
 
+## 0.3.1
+
+### Patch Changes
+
+- 8ac162e: tag color green 추가
+  switch 에 disabled/checked 상태 추가
+
 ## 0.3.0
 
 ### Minor Changes
