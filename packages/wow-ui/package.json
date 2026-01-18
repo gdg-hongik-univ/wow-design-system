@@ -20,15 +20,15 @@
   "type": "module",
   "exports": {
     "./styles.css": "./dist/styles.css",
-    "./Toast": {
-      "types": "./dist/components/Toast/index.d.ts",
-      "require": "./dist/Toast.cjs",
-      "import": "./dist/Toast.js"
-    },
     "./ToastProvider": {
       "types": "./dist/components/Toast/ToastProvider.d.ts",
       "require": "./dist/ToastProvider.cjs",
       "import": "./dist/ToastProvider.js"
+    },
+    "./Toast": {
+      "types": "./dist/components/Toast/index.d.ts",
+      "require": "./dist/Toast.cjs",
+      "import": "./dist/Toast.js"
     },
     "./useToast": {
       "types": "./dist/components/Toast/useToast.d.ts",
@@ -50,11 +50,6 @@
       "require": "./dist/Tag.cjs",
       "import": "./dist/Tag.js"
     },
-    "./Tabs": {
-      "types": "./dist/components/Tabs/index.d.ts",
-      "require": "./dist/Tabs.cjs",
-      "import": "./dist/Tabs.js"
-    },
     "./TabsContent": {
       "types": "./dist/components/Tabs/TabsContent.d.ts",
       "require": "./dist/TabsContent.cjs",
@@ -69,6 +64,11 @@
       "types": "./dist/components/Tabs/TabsList.d.ts",
       "require": "./dist/TabsList.cjs",
       "import": "./dist/TabsList.js"
+    },
+    "./Tabs": {
+      "types": "./dist/components/Tabs/index.d.ts",
+      "require": "./dist/Tabs.cjs",
+      "import": "./dist/Tabs.js"
     },
     "./Table": {
       "types": "./dist/components/Table/Table.d.ts",

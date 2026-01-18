@@ -20,16 +20,16 @@ process.env.BABEL_ENV = "production";
 
 export default {
   input: {
-    Toast: "./src/components/Toast",
     ToastProvider: "./src/components/Toast/ToastProvider",
+    Toast: "./src/components/Toast",
     useToast: "./src/components/Toast/useToast",
     TextField: "./src/components/TextField",
     TextButton: "./src/components/TextButton",
     Tag: "./src/components/Tag",
-    Tabs: "./src/components/Tabs",
     TabsContent: "./src/components/Tabs/TabsContent",
     TabsItem: "./src/components/Tabs/TabsItem",
     TabsList: "./src/components/Tabs/TabsList",
+    Tabs: "./src/components/Tabs",
     Table: "./src/components/Table/Table",
     Tbody: "./src/components/Table/Tbody",
     Td: "./src/components/Table/Td",
