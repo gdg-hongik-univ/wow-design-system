@@ -1,7 +1,7 @@
 "use client";
 
 import Space from "@components/Space";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Switch from "wowds-ui/Switch";
 import Tabs from "wowds-ui/Tabs";
 import TabsContent from "wowds-ui/TabsContent";
@@ -16,7 +16,7 @@ type EventType = {
 
 const Page = () => {
   const [, setFormValues] = useState<EventType | null>(null);
-  const [_, setMounted] = useState(false);
+  const [, setMounted] = useState(false);
 
   const onApplyChange = () => {
     setFormValues((prev) => ({
@@ -24,12 +24,6 @@ const Page = () => {
       applyTrueFalse: !prev?.applyTrueFalse,
     }));
   };
-  useEffect(() => {
-    console.log("history.scrollRestoration:", history.scrollRestoration);
-  }, []);
-  useEffect(() => {
-    console.log("NODE_ENV:", process.env.NODE_ENV);
-  }, []);
 
   return (
     <>
